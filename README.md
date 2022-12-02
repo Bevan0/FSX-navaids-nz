@@ -1,13 +1,15 @@
 # FSX Navaids Update for NZ
 Up-to-date navaids for NZ in Flight Simulator X.
 
-Uses data from [https://github.com/vatnz-dev/new-zealand-dataset] to generate FSX-compatible XML with new navdata.
+Uses data from https://github.com/vatnz-dev/new-zealand-dataset to generate FSX-compatible XML with new navdata.
 
 This update is available under the MIT License with Speed Restrictions exception. For more details on the Speed Restrictions exception, please read the LICENSE file.
 
 ## Currently supported
 [x] Intersections (some bugs still)
+
 [] VORs and NDBs (will be easy, when I figure out how it works)
+
 [] Airways (no clue how this works)
 
 ## Usage
