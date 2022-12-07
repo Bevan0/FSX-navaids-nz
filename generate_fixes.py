@@ -36,7 +36,7 @@ class VOR:
         self.latitude, self.longitude = fromDMS(coordinates)
         self.frequency = frequency
 
-    def __str__(self): return f''
+    def __str__(self): return f"""<Vor dme="TRUE" dmeOnly="FALSE" lat="{self.latitude}" lon="{self.longitude}" alt="1M" type="HIGH" frequency="{frequency}" range="240760.0M" magvar="22.5" region="NZ" ident="{self.name}" name="{self.name}"><Dme lat="{self.latitude}" lon="{self.longitude}" alt="1M" range="240760.0M" /></Vor>"""
 
 class NDB:
     name: str
@@ -49,13 +49,13 @@ class NDB:
         self.latitude, self.longitude = fromDMS(coordinates)
         self.frequency = frequency
     
-    def __str__(self): return f''
+    def __str__(self): return f"""<Ndb lat="{self.latitude}" lon="{self.longitude}" alt="1M" type="HH" frequency="{frequency}" range="240760.0M" magvar="22.5" region="NZ" ident="{self.name}" name="{self.name}"></Ndb>"""
 
 class Intersection:
     name: str
     latitude: float
     longitude: float
-    magneticVariation: int = 22.5
+    magneticVariation: float = 22.5
 
     def __init__(self, name, coordinates):
         self.name = name
@@ -74,6 +74,8 @@ for fix in airspace["Airspace"]["Intersections"]["Point"]:
         frequency = fix["@Frequency"]
         if navaid_type == "VOR":
             export.append(VOR(name, coordinates, frequency))
+        elif navaid_type == "NDB":
+            export.append(NDB(name, coordinates, frequency))
     elif fix_type == "Fix" and len(name) == 5:
         export.append(Intersection(name, coordinates))
 

@@ -8,9 +8,9 @@ This update is available under the MIT License with Speed Restrictions exception
 ## Currently supported
 [x] Intersections (some bugs still)
 
-[] VORs and NDBs (will be easy, when I figure out how it works)
+[x] VORs and NDBs
 
-[] Airways (no clue how this works)
+[] Airways
 
 ## Usage
 - Download the file "Airspace.xml" from https://github.com/vatnz-dev/new-zealand-dataset and place it in the same folder as this one.
