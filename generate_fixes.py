@@ -4,9 +4,10 @@ airspace_f = open("Airspace.xml", "r")
 airspace = xmltodict.parse(airspace_f.read())
 airspace_f.close()
 
-def fromDMS(coordinate):
-    lat_dms = coordinate[0:10]
-    lon_dms = coordinate[11:21]
+# Converts from ISO 6709 6/7 digits to a raw angle
+def fromDMS(coordinate: str):
+    lat_dms = coordinate[0:1] + coordinate[1:].split("+")[0].split("-")[0]
+    lon_dms = coordinate[len(lat_dms):]
 
     lat_sign = lat_dms[0]
     lat_deg = float(lat_dms[1:3])
