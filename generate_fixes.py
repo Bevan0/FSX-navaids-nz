@@ -64,9 +64,14 @@ class Intersection:
     def __str__(self): return f'<Waypoint lat="{str(self.latitude)[0:10]}" lon="{str(self.longitude)[0:11]}" waypointType="NAMED" waypointRegion="NZ" waypointIdent="{self.name}"></Waypoint>'
 
 export = []
+seen_fixes = []
 
 for fix in airspace["Airspace"]["Intersections"]["Point"]:
     name = fix["@Name"]
+    if name in seen_fixes: # Remove duplicates
+        continue
+    else:
+        seen_fixes.append(name)
     fix_type = fix["@Type"]
     coordinates = fix["#text"]
     if fix_type == "Navaid": # VORs and NDBs
